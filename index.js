@@ -11,6 +11,7 @@ const auth = require("./src/auth/auth.router");
 const mongoose = require("mongoose");
 
 const options = { useNewUrlParser: true, useUnifiedTopology: true };
+const PORT = process.env.PORT || 5001;
 
 mongoose.connect(process.env.DB_HOST, options, () => {
   console.log("Mongo ready to accept queries");
@@ -33,8 +34,8 @@ app.use("/auth", auth);
 
 const start = async () => {
   try {
-    app.listen(5001, () => {
-      console.log(`REST API on http://localhost:5001/`);
+    app.listen(PORT, () => {
+      console.log(`REST API on http://localhost:${PORT}/`);
     });
   } catch (e) {
     console.error(e);
